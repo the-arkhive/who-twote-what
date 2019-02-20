@@ -1,3 +1,6 @@
+# Who Twote That
+A game that takes two Twitter users as input and randomly selects some of their Tweets and has the players guess who Twote what.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
