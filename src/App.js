@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Who Twote That </h1>
+          <h1>Who Twote What </h1>
           <p>
             A Twitter game to see how well you know your friends, or really any
             two Twitter users for that matter. I'm using this to learn{" "}
