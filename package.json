@@ -27,6 +27,5 @@
   "devDependencies": {
     "gh-pages": "^2.0.1"
   },
-
   "homepage": "http://thomas-williams.github.io/who-twote-what"
 }
