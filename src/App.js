@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 //import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -9,7 +9,9 @@ class App extends Component {
         <header className="App-header">
           <h1>Who Twote That </h1>
           <p>
-            A Twitter game to see how well you know your friends, or really any two Twitter users for that matter. I'm using this to learn <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
+            A Twitter game to see how well you know your friends, or really any
+            two Twitter users for that matter. I'm using this to learn{" "}
+            <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
           </p>
           <a
             className="App-link"
@@ -17,7 +19,10 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Hello World <span role="img" aria-label="Hello">👋</span>
+            Hello World{" "}
+            <span role="img" aria-label="Hello">
+              👋
+            </span>
           </a>
         </header>
       </div>

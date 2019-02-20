@@ -1,7 +1,7 @@
-- when you call a class from an HTML block is displays the `render` portion of that class
+- when you call a class from an HTML block it displays the `render` portion of that class
 
 
-
+https://kanyeorelon.com/
 
 font-family: 'Roboto', sans-serif;
 
