@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+//import logo from './logo.svg';
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Who Twote What </h1>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            A Twitter game to see how well you know your friends, or really any
+            two Twitter users for that matter. I'm using this to learn{" "}
+            <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
           </p>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Hello World{" "}
+            <span role="img" aria-label="Hello">
+              👋
+            </span>
           </a>
         </header>
       </div>
