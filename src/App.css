@@ -23,6 +23,32 @@
   color: #61dafb;
 }
 
+input[inputType=text] {
+  font-size: 1em;
+  justify-content: center;
+  padding:5px;
+  border:3px solid rgb(11, 128, 118); 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+input[inputType=text]:focus {
+  border-color:rgb(226, 102, 0);
+}
+
+.button {
+  background-color: white;
+  font-size: 1em;
+  width: 5em;
+  height: auto;
+  color: #282c34;
+  justify-content: center;
+  padding:5px;
+  border:2px solid #282c34; 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
