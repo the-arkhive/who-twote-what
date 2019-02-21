@@ -105,7 +105,6 @@ class FormContainer extends Component {
           title={"Clear"}>
           Clear</button>{" "}
         {/* Clear the form */}
->>>>>>> Stashed changes
       </form>
     );
   }
