@@ -25,3 +25,4 @@ yarn-error.log*
 # non-production docs
 /docs/notes.txt
 /docs/outline.md
+/prev-versions

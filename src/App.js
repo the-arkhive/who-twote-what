@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-//import logo from './logo.svg';
 import "./App.css";
+//import logo from './logo.svg';
 
 class App extends Component {
   render() {
@@ -8,16 +8,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>Who Twote What </h1>
-          <p>
-            A Twitter game to see how well you know your friends, or really any
-            two Twitter users for that matter. I'm using this to learn{" "}
-            <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
-          </p>
-          <NameForm Name="user1: "/>
-          <NameForm Name="user2: "/>
           <a
             className="App-link"
-            href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program"
+            href="https://thomaslodgewilliams.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -26,41 +19,92 @@ class App extends Component {
               👋
             </span>
           </a>
+          <p>
+            A Twitter game to see how well you know your friends, or really any
+            two Twitter users for that matter. I'm using this to learn{" "}
+            <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
+          </p>
+          <FormContainer/>
         </header>
       </div>
     );
   }
 }
 
-class NameForm extends Component {
+class FormContainer extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      value: '',
-      name: this.props.Name,
+      user1: "",
+      user2: "",
+      link: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleClearForm = this.handleClearForm.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleInput(e) {
+    this.setState(
+      { [e.target.name]: e.target.value},
+      () => console.log(this.state.user1),
+      () => console.log(this.state.user2)
+    );
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleFormSubmit(e) {
+    e.preventDefault();
+    let suffix = this.state.user1 + '/' + this.state.user2;
+    let link = 'base-url/' + suffix;
+    this.setState({ link: link });
+  }
+
+  handleClearForm(e) {
+    e.preventDefault();
+    this.setState({
+      user1: "",
+      user2: "",
+    });
   }
 
   render() {
-    return(
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          {this.state.name}
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <p>{this.state.value}</p>
-        </label>
+    return (
+      <form className="container-fluid" onSubmit={this.handleFormSubmit}>
+        <input
+          inputType={"text"}
+          title={"User1"}
+          name={"user1"}
+          value={this.state.user1}
+          placeholder={"Enter Twitter Name"}
+          onChange={this.handleInput}
+        />{" "}
+        {/* Name of the user */}
+        <input
+          inputType={"text"}
+          title={"User2"}
+          name={"user2"}
+          value={this.state.user2}
+          placeholder={"Enter Twitter Name"}
+          onChange={this.handleInput}
+        />{" "}
+        {/* About you */}
+        <p>Link: {this.state.link}</p>
+        <button
+          class="button"
+          action={this.handleFormSubmit}
+          type={"primary"}
+          title={"Submit"}>
+          Submit</button>{" "}
+        {/*Submit */}
+        <button
+          class="button"
+          action={this.handleClearForm}
+          type={"secondary"}
+          title={"Clear"}>
+          Clear</button>{" "}
+        {/* Clear the form */}
       </form>
     );
   }
