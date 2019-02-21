@@ -79,8 +79,8 @@ class FormContainer extends Component {
           value={this.state.user1}
           placeholder={"Enter Twitter Name"}
           onChange={this.handleInput}
-        />{" "}
-        {/* Name of the user */}
+        />
+        
         <input
           inputType={"text"}
           title={"User2"}
@@ -88,23 +88,22 @@ class FormContainer extends Component {
           value={this.state.user2}
           placeholder={"Enter Twitter Name"}
           onChange={this.handleInput}
-        />{" "}
-        {/* About you */}
+        />
+
         <p>Link: {this.state.link}</p>
         <button
           class="button"
           action={this.handleFormSubmit}
           type={"primary"}
           title={"Submit"}>
-          Submit</button>{" "}
-        {/*Submit */}
+          Submit</button>
+
         <button
           class="button"
           action={this.handleClearForm}
           type={"secondary"}
           title={"Clear"}>
-          Clear</button>{" "}
-        {/* Clear the form */}
+          Clear</button>
       </form>
     );
   }
