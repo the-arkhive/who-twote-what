@@ -80,7 +80,7 @@ class FormContainer extends Component {
           placeholder={"Enter Twitter Name"}
           onChange={this.handleInput}
         />
-        
+
         <input
           inputType={"text"}
           title={"User2"}
@@ -96,14 +96,17 @@ class FormContainer extends Component {
           action={this.handleFormSubmit}
           type={"primary"}
           title={"Submit"}>
-          Submit</button>
+          Submit
+        </button>
 
         <button
           class="button"
           action={this.handleClearForm}
           type={"secondary"}
           title={"Clear"}>
-          Clear</button>
+          Clear
+        </button>
+        
       </form>
     );
   }
