@@ -30,6 +30,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### Deployment
+
+Deployment is run by Zeit's tool [now](https://zeit.co/examples/create-react-app/) and documentation for configuration is [here](https://zeit.co/docs/v2/deployments/configuration). 
+
+To deploy, simply run `now`
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
@@ -61,10 +67,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ma
 ### Advanced Configuration
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
 ### `npm run build` fails to minify
 
