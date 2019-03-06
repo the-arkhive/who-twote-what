@@ -26,3 +26,6 @@ yarn-error.log*
 /docs/notes.txt
 /docs/outline.md
 /prev-versions
+/.git
+/extras
+/src/api-keys.js
