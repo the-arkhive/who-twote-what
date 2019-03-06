@@ -30,6 +30,7 @@ class App extends Component {
       ],
       currentTweet: '',
       currentTweetI: 0,
+      isLoggedIn: false,
 
 
     };
@@ -50,11 +51,10 @@ class App extends Component {
   render() {
     //IS LOGGED IN WILL BE DETERMINED BY URL PROCESSING
     //CHANGE COPY BUTTON TO PLAY BUTTON WOULD CHANGE LOGIN STATE
-    var isLoggedIn = true;
 
 
 
-    if (!isLoggedIn) {
+    if (!this.state.isLoggedIn) {
       return (
         <div className="App">
           <header className="App-header">
@@ -72,7 +72,7 @@ class App extends Component {
             </a>
             <p>
               A Twitter game to see how well you know your friends, or really any
-              two Twitter users for that matter. I'm using this to learn
+              two Twitter users for that matter. I'm using this to learn 
               <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
             </p>
           </header>
@@ -100,7 +100,7 @@ class App extends Component {
             </a>
             <p>
               A Twitter game to see how well you know your friends, or really any
-              two Twitter users for that matter. I'm using this to learn
+              two Twitter users for that matter. I'm using this to learn 
               <a href="https://reactjs.org/tutorial/tutorial.html">React.js</a>.
             </p>
           </header>
@@ -132,7 +132,9 @@ class FormContainer extends Component {
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleClearForm = this.handleClearForm.bind(this);
+    this.handleFormPlay = this.handleFormPlay.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.liftProps = this.liftProps.bind(this);
   }
 
   liftProps = (stateName, stateValue) => {
@@ -141,10 +143,16 @@ class FormContainer extends Component {
 
   //consider making this it's own file, standardize your form handling
   //make classes for the buttons and inputs and such
+  //Get all output control at top so logic can be done with th values of the inputs
+
+
   handleInput(e) {
-    this.liftProps(e.target.name, e.target.value)    
+    e.preventDefault();
+    this.liftProps(e.target.propName, e.target.value)    
   }
 
+
+  //Submit Handlers
   handleFormSubmit(e) {
     e.preventDefault();
     let suffix = this.props.user1 + '/' + this.props.user2;
@@ -152,12 +160,16 @@ class FormContainer extends Component {
     //might need to swap these to use liftProps
     this.props.link = 'base-url/' + suffix;
   }
-
   handleClearForm(e) {
     e.preventDefault();
-      this.props.user1 = "";
-      this.props.user2 = "";
+    this.props.user1 = "";
+    this.props.user2 = "";
   }
+  handleFormPlay(e) {
+    e.preventDefault();
+    this.props.onLiftState("isLoggedIn", true);
+  }
+  //end submit handlers
 
   render() {
     return (
@@ -166,18 +178,20 @@ class FormContainer extends Component {
           inputType={"text"}
           title={"User1"}
           name={"user1"}
-          value={this.state.user1}
+          propName={"user1"}
+          value={this.props.user1}
           placeholder={"Enter Twitter Name"}
-          onChange={this.handleInput('user1:', this.state.user1)}
+          onChange={this.handleInput}
         />
 
         <input
           inputType={"text"}
           title={"User2"}
           name={"user2"}
-          value={this.state.user2}
+          propName={"user2"}
+          value={this.props.user2}
           placeholder={"Enter Twitter Name"}
-          onChange={this.handleInput('user2:', this.state.user2)}
+          onChange={this.handleInput}
         />
 
         <p>Link: {this.state.link}</p>
@@ -200,9 +214,11 @@ class FormContainer extends Component {
 
         <button
           class="button"
-          action={this.handleFormSubmit}
+          propName={"isLoggedIn"}
+          value={true}
+          action={this.handleInput}
           type={"secondary"}
-          title={"Submit"}>
+          title={"PLAY"}>
           PLAY
         </button>
 
@@ -215,12 +231,19 @@ class GameContainer extends Component {
   constructor (props){
     super(props)
 
-
+    this.liftProps = this.liftProps.bind(this);
+    this.getTweets = this.getTweets.bind(this);
+    this.handleSelection = this.handleSelection.bind(this);
   }
   
   liftProps(stateName, stateValue){
     //storeProps(stateName, stateValue);
     this.props.onLiftState(stateName, stateValue);
+  }
+
+
+  handleSelection(e){
+    //button value has user check against current tweet
   }
 
   /*//might not need this at all, in fact hopefully will not
@@ -233,7 +256,7 @@ class GameContainer extends Component {
     }
   }*/
 
-
+  //trigger on isLoggedIn
   getTweets(user1, user2, num) {
     var Twitter = require('twitter')
     var config = require('./api-keys.js')
@@ -251,6 +274,7 @@ class GameContainer extends Component {
     client.get('statuses/user_timeline', params1, searchedData);
     client.get('statuses/user_timeline', params2, searchedData);
 
+    //function inside a function? probably not okay, but let's find out
     function searchedData(err, data, response) {
       var tweets = data.statuses
       for (var i = 0; i < tweets.length; i++) {
@@ -263,6 +287,8 @@ class GameContainer extends Component {
   }
 
   render() {
+    //getTweets(this.props.user1, this.props.user2)
+
       return (
         <div className="App">
           <header className="App-header">
@@ -281,6 +307,24 @@ class GameContainer extends Component {
           </header>
 
           <div className="Content">
+            <tweet
+            >
+              {this.props.currentTweet}
+            </tweet>
+            <button
+              class="button"
+              action={this.handleSelection}
+              type={"primary"}
+              title={this.props.user1}>
+              {this.props.user1}
+            </button>
+            <button
+              class="button"
+              action={this.handleSelection}
+              type={"primary"}
+              title={this.props.user2}>
+              {this.props.user2}
+            </button>
           </div>
         </div>
       )
