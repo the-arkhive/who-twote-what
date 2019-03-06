@@ -287,7 +287,7 @@ class GameContainer extends Component {
   }
 
   render() {
-    //getTweets(this.props.user1, this.props.user2)
+    getTweets(this.props.user1, this.props.user2, 10)
 
       return (
         <div className="App">
