@@ -1,9 +1,5 @@
 # Who Twote What (working title)
 
-## Deadlines 
-VERSION 1.0 BY 27 FEB  
-FINAL BY 10 MAR
-
 ## Requirements
 - USE TWITTER API
 ### Part 1 - Home page
